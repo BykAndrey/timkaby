@@ -1,0 +1,202 @@
+body {
+  background-color: white;
+  width: 1200px;
+  margin: auto;
+  font-family: Arial;
+}
+header {
+  border-bottom: 1px dotted green;
+  min-height: 150px;
+  display: -ms-flexbox;
+  display: flex;
+}
+header div.links {
+  margin: 30px;
+}
+header div.links:hover ul {
+  display: block;
+  border: 3px solid grey;
+  padding: 35px;
+  box-sizing: border-box;
+  position: absolute;
+  background-color: white;
+}
+header div.links:hover ul li {
+  list-style: none;
+}
+header div.links:hover ul li a {
+  text-decoration: none;
+  color: black;
+}
+header div.links ul {
+  display: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Arial;
+  border-bottom: 1px dotted greenyellow;
+}
+table {
+  width: 100%;
+}
+table tbody tr:nth-child(even) {
+  background-color: #ebfbd5;
+}
+table tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+table tbody td {
+  border-bottom: 1px dotted black;
+}
+table.list {
+  width: 100%;
+}
+table.create {
+  width: 70%;
+  margin: auto;
+}
+table.create tbody tr:nth-child(even) {
+  background-color: #ebfbd5;
+}
+table.create tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+table.create tbody tr td input,
+table.create tbody tr td textatea,
+table.create tbody tr td select {
+  width: 80%;
+}
+table.create tbody tr td input[type="checkbox"] {
+  width: 40px;
+  height: 40px;
+}
+table.create tbody tr td input[type="submit"].save {
+  height: 50px;
+  font-size: 25px;
+}
+table.create p.help {
+  font-size: 12px;
+  width: 80%;
+  background-color: #c2d4c4;
+  padding: 5px;
+}
+table.create p.help_must {
+  font-size: 12px;
+  width: 80%;
+  background-color: #c2d4c4;
+  padding: 5px;
+  color: red;
+}
+ul.controllers_list {
+  padding: 0;
+  margin: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  box-shadow: 1px 1px 1px 0px #010101;
+  margin-bottom: 15px;
+}
+ul.controllers_list li {
+  border-left: 1px dotted;
+  padding: 5px;
+  line-height: 35px;
+  list-style: none;
+}
+ul.controllers_list li a {
+  color: black;
+}
+#tabs > ul {
+  margin: 0;
+  padding: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+}
+#tabs > ul li {
+  padding: 0px 10px;
+  list-style: none;
+}
+.pay_attention {
+  background-color: #e9e8c1;
+  padding: 10px;
+  box-shadow: 1px 1px 3px 1px grey;
+  border-radius: 3px;
+}
+.warning {
+  background-color: #e9ccc1;
+  padding: 10px;
+  box-shadow: 1px 1px 3px 1px grey;
+  border-radius: 3px;
+}
+.warning i {
+  color: red;
+}
+footer {
+  min-height: 500px;
+}
+#message.message {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  line-height: 40px;
+  background-color: #b8e3c6;
+  font-size: 25px;
+  box-shadow: 0px 11px 23px 14px grey;
+  border-top: 1px solid #b9b9b9;
+}
+#message.message.error {
+  background-color: #e3b8b8;
+}
+#search {
+  position: relative;
+}
+#search .answer {
+  display: none;
+  border: 1px solid #ccc;
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  box-shadow: 1px 1px 3px 0px #7e7d7d;
+}
+#search .answer ul li {
+  list-style: none;
+  padding: 10px;
+}
+#search .answer ul li a {
+  color: black;
+}
+.but {
+  margin: auto;
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  transition: 300ms;
+  cursor: pointer;
+  text-align: center;
+  line-height: 43px;
+}
+.but:hover {
+  opacity: 0.7;
+}
+.but.but_red {
+  background-color: red;
+}
+.but.but_green {
+  background-color: greenyellow;
+}
+@media screen and (max-width: 1200px) {
+  body {
+    width: auto;
+  }
+  table.create {
+    width: 100%;
+  }
+}

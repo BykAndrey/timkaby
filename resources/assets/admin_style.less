@@ -1,0 +1,219 @@
+body{
+    background-color: white;
+    width: 1200px;
+    margin: auto;
+    font-family: Arial;
+}
+header{
+    border-bottom: 1px dotted green;
+    min-height:150px;
+    display: flex;
+    div.links{
+        margin: 30px;
+        &:hover{
+            ul{
+                display: block;
+                border: 3px solid grey;
+                padding: 35px;
+                box-sizing: border-box;
+                position: absolute;
+                background-color: white;
+                li{
+                    list-style: none;
+                    a{
+                        text-decoration: none;
+                        color: black;
+
+                    }
+                }
+            }
+        }
+        h3{
+        }
+        ul{
+            display: none;
+        }
+    }
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: Arial;
+    border-bottom: 1px dotted greenyellow;
+}
+table{
+    width: 100%;
+    tbody{
+        tr:nth-child(even){
+            background-color: #ebfbd5;
+
+        }
+        tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        td{
+            border-bottom: 1px dotted black;
+        }
+    }
+}
+table.list{
+    width: 100%;
+}
+table.create{
+    width: 70%;
+    margin: auto;
+    tbody{
+        tr:nth-child(even){
+            background-color: #ebfbd5;
+        }
+        tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        tr{
+
+            td{
+
+                input,textatea,select{
+                    width: 80%;
+                }
+                input[type="checkbox"]{
+                    width: 40px;
+                    height: 40px;
+                }
+                input[type="submit"].save{
+                    height: 50px;
+                    font-size: 25px;
+
+                }
+
+            }
+        }
+    }
+    p.help{
+        &_must{
+            font-size: 12px;
+            width: 80%;
+            background-color: #c2d4c4;
+            padding: 5px;
+            color:red;
+        }
+        font-size: 12px;
+        width: 80%;
+        background-color: #c2d4c4;
+        padding: 5px;
+    }
+}
+ul.controllers_list{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 1px 1px 1px 0px rgba(1,1,1,1);
+    margin-bottom: 15px;
+    li{
+        border-left: 1px dotted;
+        padding: 5px;
+        line-height: 35px;
+        list-style: none;
+        a{
+            color: black;;
+        }
+
+    }
+}
+#tabs{
+    &>ul{
+        margin: 0;
+        padding: 0;
+        display: flex;;
+        justify-content: flex-start;
+        li{
+            padding: 0px 10px;
+            list-style: none;
+        }
+    }
+}
+.pay_attention{
+    background-color: rgb(233, 232, 193);
+    padding: 10px;
+    box-shadow: 1px 1px 3px 1px grey;
+    border-radius: 3px;
+}
+.warning{
+    background-color: #e9ccc1;
+    padding: 10px;
+    box-shadow: 1px 1px 3px 1px grey;
+    border-radius: 3px;
+    i{
+        color:red;
+    }
+}
+footer{
+    min-height:500px;
+}
+#message.message{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    line-height: 40px;
+    background-color: rgb(184, 227, 198);
+    font-size: 25px;
+    box-shadow: 0px 11px 23px 14px grey;
+    border-top: 1px solid #b9b9b9;
+}
+#message.message.error{
+    background-color: rgb(227, 184, 184);
+}
+#search{
+    position: relative;
+    .answer{
+        display: none;
+        border: 1px solid #ccc;
+        position: absolute;
+        width: 100%;
+        background-color: white;
+        box-shadow: 1px 1px 3px 0px rgb(126, 125, 125);
+
+        ul{
+            li{
+                list-style: none;
+                padding: 10px;
+
+                a{
+                    color: black;
+                }
+            }
+        }
+    }
+}
+
+.but{
+    margin: auto;
+    width:45px;
+    height:45px;
+    border-radius: 50px;
+    transition: 300ms;
+    cursor: pointer;
+    text-align: center;
+
+    line-height: 43px;
+    &:hover{
+        opacity: 0.7;
+    }
+    &.but_red{
+        background-color: red;
+    }
+    &.but_green{
+        background-color: greenyellow;
+    }
+}
+
+@media screen and(max-width:1200px) {
+
+body{
+    width: auto;
+}
+    table.create{
+        width: 100%;
+    }
+}

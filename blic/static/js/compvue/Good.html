@@ -1,0 +1,49 @@
+
+
+<div class="good middle">
+
+    <a :href="getUrl(item.caturl,item.url)">
+        <div class="image" v-bind:style="{'background-image':'url(/'+item.image+')'}">
+
+        </div>
+    </a>
+    <div class="info">
+        <h5><a :href="getUrl(item.caturl,item.url)">{{ item.name }}</a></h5>
+        <p>{{ (item.price).toFixed(2) }} р. <br>
+            <span v-if="item.discount>0" class="discount">-{{ item.discount }}%</span>
+        </p>
+        <div :title="'Рейтинг товара '+item.rating+'/5'">
+
+            <template v-for="i in [0,1,2,3,4]">
+
+                <template v-if="item.rating-i>1">
+                    <img src="/static/mySh/images/star-full.svg" width="10" alt="">
+                </template>
+                <template v-else="">
+                    <template v-if="item.rating-i>=0.5">
+                        <img src="/static/mySh/images/star-half.svg" width="10" alt="">
+                    </template>
+                    <template v-else="">
+                        <img src="/static/mySh/images/star-empty.svg" width="10" alt="">
+                    </template>
+                </template>
+
+            </template>
+
+
+
+
+
+        </div>
+        <div class="cntrls">
+
+            <div class="common-but common-but-clear">
+                <div class="common-but-left common-but " v-on:click="addToCart(item.id)">В Корзину!</div>
+                <div class="common-but-right common-but ">
+                    <img src="/static/mySh/images/like.svg" alt="Нравится" width="20">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

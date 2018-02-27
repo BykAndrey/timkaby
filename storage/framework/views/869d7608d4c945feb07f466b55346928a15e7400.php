@@ -1,0 +1,32 @@
+
+
+<?php if(count($widget_news)>0): ?>
+<div class="widget-news">
+    <h2 class="head">
+        <a href="<?php echo e(route('home::all_news')); ?>">
+            Новости
+        </a>
+    </h2>
+
+    <div class="display">
+        <?php 
+        $i=0;
+         ?>
+        <?php foreach($widget_news as $new): ?>
+            <div class="slide"
+                 style="background-image:url(/<?php echo e(\App\ItemGroup::getImage($new->image,250,null,\App\Http\Controllers\Admin\BaseAdminController::$pathImageNews)); ?>); opacity: 0;">
+                    <p><a href="<?php echo e(route('home::articul',['url'=>$new->url])); ?>"><?php echo e($new->name); ?></a></p>
+            </div>
+            <?php endforeach; ?>
+    </div>
+    <div class="controls">
+        <div class="marks">
+            <?php foreach($widget_news as $new): ?>
+                <div class="mark"></div>
+                <?php endforeach; ?>
+        </div>
+    </div>
+
+</div>
+
+<?php endif; ?>
