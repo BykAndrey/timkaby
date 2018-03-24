@@ -18,7 +18,7 @@
             <col width="1%" span="1" style="background-color:#deffda">
             <col width="1%" span="1" style="background-color:#cedeff">
 
-            <col width="1%" span="1" style="background-color:#deffda">
+
             <col width="1%" span="1" style="background-color:#cedeff">
         </colgroup>
         <tr>
@@ -27,9 +27,7 @@
 
             <th>Название (<a href="<?php echo e(route('admin::good_category',['page'=>1,'sortby'=>'name','sortMethod'=>'desc'])); ?>">убв.</a>
                 <a href="<?php echo e(route('admin::good_category',['page'=>1,'sortby'=>'name','sortMethod'=>'asc'])); ?>">возр.</a>)</th>
-            <th>Родитель
-                <a href="<?php echo e(route('admin::good_category',['page'=>1,'sortby'=>'parent_name','sortMethod'=>'desc'])); ?>">убв.</a>
-                <a href="<?php echo e(route('admin::good_category',['page'=>1,'sortby'=>'parent_name','sortMethod'=>'asc'])); ?>">возр.</a>)</th>
+
             <th>Active</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -37,14 +35,27 @@
 
         </tr>
         <?php foreach($category as $item): ?>
+
             <tr>
                 <td><?php echo e($item->id); ?></td>
                 <td><b><?php echo e($item->name); ?></b> (товаров: <?php echo e($item->count_items); ?>)</td>
-                <td><?php echo e($item->parent_name); ?></td>
+
                 <td><?php echo e($item->is_active); ?></td>
                 <td><a href="<?php echo e(route('admin::good_category_edit',['id'=>$item->id])); ?>">Редактировать</a>
                 </td><td><a href="<?php echo e(route('admin::good_category_delete',['id'=>$item->id])); ?>">Удалить</a></td>
             </tr>
+            <?php foreach($item->sub_cat as $i): ?>
+
+                <tr>
+                    <td><?php echo e($i->id); ?></td>
+                    <td>---->><b><?php echo e($i->name); ?></b> (товаров: <?php echo e($i->count_items); ?>)</td>
+
+                    <td><?php echo e($i->is_active); ?></td>
+                    <td><a href="<?php echo e(route('admin::good_category_edit',['id'=>$i->id])); ?>">Редактировать</a>
+                    </td><td><a href="<?php echo e(route('admin::good_category_delete',['id'=>$i->id])); ?>">Удалить</a></td>
+                </tr>
+
+            <?php endforeach; ?>
             <?php endforeach; ?>
 
     </table>

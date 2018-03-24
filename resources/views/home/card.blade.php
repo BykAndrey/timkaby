@@ -67,8 +67,8 @@
 
                             <meta itemprop="ratingValue" content="{{$good_item->rating}}">
                             <meta itemprop="bestRating" content="5">
-                            <meta itemprop="worstRating" content="0">
-                            <meta itemprop="ratingCount" content="1">
+                            <meta itemprop="worstRating" content="1">
+                            <meta itemprop="ratingCount" content="{{$count_comments}}">
                             @include('home.parts.elements.rating',['rating'=>$good_item->rating,'size'=>20])
                         </div>
 
@@ -147,6 +147,12 @@
                     </div>
 
                     @endif
+
+                    @if($user==false)
+                            <div class="help help-error">
+                                Что бы оставить отзыв на сайте необходимо пройти <a href="#">авторизацию.</a>
+                            </div>
+                        @endif
                     <div>
 
 
@@ -161,11 +167,11 @@
                                         <img src="{{URL::asset('static/img/star-empty.svg')}}" width="10" alt="-">
                                     </template>
                                   </span>
-                                <div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                               <!-- <div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
                                     <meta itemprop="ratingValue" content="@{{ parseInt(item.rating) }}">
                                     <meta itemprop="bestRating" content="5">
                                     <meta itemprop="worstRating" content="0">
-                                </div>
+                                </div>-->
                                 <p itemprop="reviewBody">@{{item.comment}}</p>
                             </div>
                         <paginate v-on:reload="reload($event)" :count_pages="maxPage" :current_page="currentPage"  ></paginate>
@@ -375,7 +381,6 @@
 
 
             });
-            
             /*-------------------------------*/
             function toLeft() {
                 var b=$('#miniatures').children('.box');
@@ -389,7 +394,6 @@
                     }
                 });
                 console.log(inA);
-
                 inA--;
                 if(inA<0){
                     inA=len-1;
@@ -418,8 +422,6 @@
                     }
                 });
             }
-
-
             /*---------------------------------------*/
             function toRight() {
                 var b=$('#miniatures').children('.box');
@@ -460,20 +462,9 @@
                     }
                 });
             }
-
-
-
-
-
             $('.but.left').click(function () {
-
                 toLeft();
-
             });
-
-
-
-
             $('.but.right').click(function () {
 
                 toRight();

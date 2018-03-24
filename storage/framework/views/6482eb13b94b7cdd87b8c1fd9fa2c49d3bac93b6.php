@@ -69,8 +69,8 @@
 
                             <meta itemprop="ratingValue" content="<?php echo e($good_item->rating); ?>">
                             <meta itemprop="bestRating" content="5">
-                            <meta itemprop="worstRating" content="0">
-                            <meta itemprop="ratingCount" content="1">
+                            <meta itemprop="worstRating" content="1">
+                            <meta itemprop="ratingCount" content="<?php echo e($count_comments); ?>">
                             <?php echo $__env->make('home.parts.elements.rating',['rating'=>$good_item->rating,'size'=>20], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                         </div>
 
@@ -88,7 +88,11 @@
                 </div>
 
                     <div>
-                        О способах доставки и стоимости уточняйте по телефону
+                       О стоимости и способах доставки уточняйте по телефонам.
+                        <br>
+                        <b>+375 (29) 565-56-68 (Мтс)</b>
+                        <br>
+                        <b>+375 (44) 561-51-00 (Velcom)</b>
                     </div>
                     <div class="flex-wrap">
                         <?php foreach($group_goods as $item_gr): ?>
@@ -147,6 +151,12 @@
                     </div>
 
                     <?php endif; ?>
+
+                    <?php if($user==false): ?>
+                            <div class="help help-error">
+                                Что бы оставить отзыв на сайте необходимо пройти <a href="#">авторизацию.</a>
+                            </div>
+                        <?php endif; ?>
                     <div>
 
 
@@ -161,11 +171,11 @@
                                         <img src="<?php echo e(URL::asset('static/img/star-empty.svg')); ?>" width="10" alt="-">
                                     </template>
                                   </span>
-                                <div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                               <!-- <div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
                                     <meta itemprop="ratingValue" content="{{ parseInt(item.rating) }}">
                                     <meta itemprop="bestRating" content="5">
                                     <meta itemprop="worstRating" content="0">
-                                </div>
+                                </div>-->
                                 <p itemprop="reviewBody">{{item.comment}}</p>
                             </div>
                         <paginate v-on:reload="reload($event)" :count_pages="maxPage" :current_page="currentPage"  ></paginate>
@@ -375,7 +385,6 @@
 
 
             });
-            
             /*-------------------------------*/
             function toLeft() {
                 var b=$('#miniatures').children('.box');
@@ -389,7 +398,6 @@
                     }
                 });
                 console.log(inA);
-
                 inA--;
                 if(inA<0){
                     inA=len-1;
@@ -418,8 +426,6 @@
                     }
                 });
             }
-
-
             /*---------------------------------------*/
             function toRight() {
                 var b=$('#miniatures').children('.box');
@@ -460,20 +466,9 @@
                     }
                 });
             }
-
-
-
-
-
             $('.but.left').click(function () {
-
                 toLeft();
-
             });
-
-
-
-
             $('.but.right').click(function () {
 
                 toRight();

@@ -20,7 +20,7 @@
             <col width="1%" span="1" style="background-color:#deffda">
             <col width="1%" span="1" style="background-color:#cedeff">
 
-            <col width="1%" span="1" style="background-color:#deffda">
+
             <col width="1%" span="1" style="background-color:#cedeff">
         </colgroup>
         <tr>
@@ -29,9 +29,7 @@
 
             <th>Название (<a href="{{route('admin::good_category',['page'=>1,'sortby'=>'name','sortMethod'=>'desc'])}}">убв.</a>
                 <a href="{{route('admin::good_category',['page'=>1,'sortby'=>'name','sortMethod'=>'asc'])}}">возр.</a>)</th>
-            <th>Родитель
-                <a href="{{route('admin::good_category',['page'=>1,'sortby'=>'parent_name','sortMethod'=>'desc'])}}">убв.</a>
-                <a href="{{route('admin::good_category',['page'=>1,'sortby'=>'parent_name','sortMethod'=>'asc'])}}">возр.</a>)</th>
+
             <th>Active</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -39,14 +37,27 @@
 
         </tr>
         @foreach($category as $item)
+
             <tr>
                 <td>{{$item->id}}</td>
                 <td><b>{{$item->name}}</b> (товаров: {{$item->count_items}})</td>
-                <td>{{$item->parent_name}}</td>
+
                 <td>{{$item->is_active}}</td>
                 <td><a href="{{route('admin::good_category_edit',['id'=>$item->id])}}">Редактировать</a>
                 </td><td><a href="{{route('admin::good_category_delete',['id'=>$item->id])}}">Удалить</a></td>
             </tr>
+            @foreach($item->sub_cat as $i)
+
+                <tr>
+                    <td>{{$i->id}}</td>
+                    <td>---->><b>{{$i->name}}</b> (товаров: {{$i->count_items}})</td>
+
+                    <td>{{$i->is_active}}</td>
+                    <td><a href="{{route('admin::good_category_edit',['id'=>$i->id])}}">Редактировать</a>
+                    </td><td><a href="{{route('admin::good_category_delete',['id'=>$i->id])}}">Удалить</a></td>
+                </tr>
+
+            @endforeach
             @endforeach
 
     </table>

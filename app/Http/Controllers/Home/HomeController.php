@@ -574,7 +574,11 @@ class HomeController extends BaseHomeController
                if(Auth::id()!=null)
                     $allowToComment=Comment::where('id_good_item',$item->id)->where('id_user',Auth::id())->first()==null?true:false;
 
+
                $this->data['allowToComment']=$allowToComment;
+
+
+
 
                 $page=0;
                 $size=5;
@@ -596,7 +600,7 @@ class HomeController extends BaseHomeController
                    ->get();
 
                 $this->data['comments']=$firstPageComments;
-
+                $this->data['count_comments']=$allCountComments;
                 $this->data['PageComment']=ceil($allCountComments/$size);
 
 

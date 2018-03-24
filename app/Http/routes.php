@@ -16,7 +16,17 @@ Route::group(['namespace'=>'Admin','as'=>'admin::','prefix'=>'admin','middleware
     Route::match(['post','get'],'/','AdminController@homepage')->name('home');
     Route::get('/loadxml','AdminController@loadxml')->name('loadxml');
     Route::match(['post','get'],'/load_goods','AdminController@load_goods')->name('load_goods');
+
     //sRoute::match(['post','g,'AdminController@load_goods')->name('admin_ajax');
+
+
+    /*Import*/
+    Route::group(['prefix'=>'import'],function (){
+        Route::match(['post','get'],'/loadOneGood','ImportController@loadOneGood')->name('loadOneGood');
+        Route::match(['post','get'],'/ajax','ImportController@ajax')->name('import_ajax');
+    });
+
+
 
 
 

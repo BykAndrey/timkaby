@@ -65,11 +65,15 @@ gulp.task('minjs2',function () {
 });
 
 gulp.task('less',function(){
-   return gulp.src('./resources/assets/*.less')
-       .pipe(less({
-           plugins: [autoprefix]
-       }))
-        .pipe(gulp.dest('./public/static/css'));
+    return gulp.watch('./resources/assets/*.less',function () {
+        console.log('Admin Style Changed');
+        return gulp.src('./resources/assets/*.less')
+            .pipe(less({
+                plugins: [autoprefix]
+            }))
+            .pipe(gulp.dest('./public/static/css'));
+    });
+
 });
 gulp.task('less2',function(){
     gulp.src('public/static/less/*.less')

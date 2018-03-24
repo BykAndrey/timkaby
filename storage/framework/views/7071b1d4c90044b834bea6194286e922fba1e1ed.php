@@ -33,10 +33,10 @@
             <div class="menu">
 
                 <?php if($user==false): ?>
-                    <p><img src="<?php echo e(URL::asset('static/img/key.svg')); ?>" alt="Вход" width="18">
+                    <p><img src="<?php echo e(URL::asset('static/img/key.svg')); ?>" alt="Вход" width="18" title="Вход">
                         <a href="<?php echo e(route('user::login')); ?>"> Вход</a>
                     </p>
-                    <p><img src="<?php echo e(URL::asset('static/img/key.svg')); ?>" alt="Регистрация" width="18">
+                    <p><img src="<?php echo e(URL::asset('static/img/key.svg')); ?>" alt="Регистрация" width="18" title="Регистрация">
                         <a href="<?php echo e(route('user::registration')); ?>">Регистрация</a>
                     </p>
                 <?php endif; ?>
@@ -399,6 +399,7 @@
 <script>
 
     $(document).ready(function () {
+        $.mask.definitions['~']='[+-]';
         $('.phone_mask').mask('+375 (99) 999-99-99');
         $('.widget-news').simple_slider();
        $('#search #what_search').blur(function () {

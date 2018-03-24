@@ -93,6 +93,12 @@
                 <?php endforeach; ?>
                 </ul>
             </div>
+            <div class="links">
+                <h3>Import</h3>
+                <ul>
+                    <li><a href="<?php echo e(route('admin::loadOneGood')); ?>">Import One Good</a></li>
+                </ul>
+            </div>
 
         </header>
         <div class="content">

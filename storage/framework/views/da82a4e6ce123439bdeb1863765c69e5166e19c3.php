@@ -18,7 +18,7 @@
 
 
                                  <?php if($slide->discount>0): ?>
-                                        <span>-<?php echo e($slide->discount); ?>%</span>
+                                        <span class="discount">-<?php echo e($slide->discount); ?>%</span>
                                      <?php endif; ?>
                              </div>
                              <div class="description">

@@ -11,7 +11,7 @@
     <input type="submit" value="Добавить свойство" v-on:click="addProp($event)">
 
 </form>
-
+    <button v-on:click="reloadList">Обновить список</button>
 
 
 <h5 id="refresh">Таблица свойств и фильтров</h5>
@@ -57,8 +57,11 @@
                     $.ajax({
                         url:'<?php echo e(route('admin::good_property_category_create')); ?>',
                         method:'post',
-
-                        data:{'name':prop.name,'_token':prop.token,'id_good_category':prop.id_category},
+                        async:false,
+                        data:{
+                            'name':prop.name,
+                            '_token':prop.token,
+                            'id_good_category':prop.id_category},
                         success: function (data) {
                           //  alert(1);
                             // $('#template').tmpl(data).appendTo('#listProperty');

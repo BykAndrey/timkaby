@@ -47,15 +47,34 @@ class CategoryController extends BaseAdminController
 
         ///$this->data['category']=Category::admin_getListobject($from=$page*$size,$to=$size);
 
-        $this->data['category']=Category::admin_getListobject([
+      /*  $this->data['category']=Category::admin_getListobject([
             'from'=>$page*$size,
             'to'=>$size,
             'sortby'=>$sortby,
             'sortMethod'=>$sortMethod
-        ]);
-        foreach ( $this->data['category'] as $item){
-            $item->count_items=ItemGroup::where('id_good_category',$item->id)->count();
+        ]);*/
+
+        $cat=Category::where('id_parent',0)->orderBy($sortby,$sortMethod)->get();
+
+        $select_cat=[];
+        foreach ($cat as $i){
+           // $i->count_items=ItemGroup::where('id_good_category',$i->id)->count();
+
+            $sub=Category::where('id_parent',$i->id)->orderBy($sortby,$sortMethod)->get();
+            $count=0;
+            foreach ($sub as $item) {
+               // echo ItemGroup::where('id_good_category',$item->id)->count();
+                $item->count_items=ItemGroup::where('id_good_category',$item->id)->count();
+
+               $count+= $item->count_items;
+            }
+            $i->count_items=$count;
+            $i->sub_cat=$sub;
         }
+        $this->data['category']=$cat;
+     /*   foreach ( $this->data['category'] as $item){
+            $item->count_items=ItemGroup::where('id_good_category',$item->id)->count();
+        }*/
         $this->data['page']=$page+1;
         $this->data['sortby']=$sortby;
         $this->data['sortMethod']=$sortMethod;
@@ -88,7 +107,7 @@ class CategoryController extends BaseAdminController
                 [
                     'name'=>'required|min:5|max:90',
                     'title'=>'required|min:5|max:90',
-                    'url'=>'required|min:5|max:100',
+                    'url'=>'required|min:5|max:100|unique:good_category,url',
                     'description'=>'',
                     'meta_description'=>''
                 ]
@@ -141,11 +160,14 @@ class CategoryController extends BaseAdminController
             return view('admin.editObjects.category',$this->data);
         }
         if($request->isMethod('post')){
+
+            $new=Category::where('id',$id)->first();
+
             $val=Validator::make($request->all(),
                 [
                     'name'=>'required|min:5|max:90',
                     'title'=>'required|min:5|max:90',
-                    'url'=>'required|min:5|max:100',
+                    'url'=>'required|min:5|max:100|unique:good_category,url,'. $new->id.',id',
                     'description'=>'',
                     'meta_description'=>''
                 ]
@@ -156,7 +178,7 @@ class CategoryController extends BaseAdminController
                     ->withInput();
             }
 
-            $new=Category::where('id',$id)->first();
+
             $new->id_parent=$request->input('id_parent');
             $new->name=$request->input('name');
             $new->title=$request->input('title');
@@ -187,6 +209,12 @@ class CategoryController extends BaseAdminController
         if($request->isMethod('post')){
             $item=Category::where('id',$id)->first();
             if($item){
+                if($item->id_parent==0){
+                    $cat=Category::where('id_parent',$item->id)->get();
+                    foreach ($cat as $c){
+                        $c->delete();
+                    }
+                }
                 $item->delete();
                 return redirect(route('admin::good_category'));
             }

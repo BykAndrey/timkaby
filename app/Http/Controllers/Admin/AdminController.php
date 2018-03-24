@@ -200,11 +200,7 @@ class AdminController extends BaseAdminController
 
           */
             echo count($goods);
-
             foreach ($goods as $g){
-
-
-
                                 $igr=new ItemGroup();
 
                                 $igr->id_good_category=intval($request->input('id_good_category'));
@@ -228,21 +224,15 @@ class AdminController extends BaseAdminController
                                 $igr->is_active=1;
 
                                 $igr->discount=0;
-
-
                                 $url = "https://sorvanec.by/images/baby_shop/goods/".$g[7];
                                 $name=time();
                                 $type=explode('.',$g[7])[1];
                                 //$filename = basename($url);
                                 if(!file_exists('static/imagesItem/'.$name.'.'.$type)){
-
                                 }else{
                                     sleep(1);
                                     $name=time();
-
                                 }
-                                
-
                                 $igr->image=$name.'.'.$type;
                                 $igr->save();
 
@@ -328,6 +318,19 @@ class AdminController extends BaseAdminController
         }
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 $url = "https://sorvanec.by/cache/3161064bb13c4fdfc75aabba440ab68f_w400.jpg";

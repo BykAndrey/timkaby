@@ -231,11 +231,12 @@ class AuthController extends BaseHomeController
                     'notify',
                     'friends',
                     'email'
-                );}
+                );
+                }
                 if($action=='login'){
 
                     $filds = array(
-                        'notify',
+                        //'notify',
                         'friends'
                     );}//. '&scope=' . implode(',', $filds)
                 return redirect('https://oauth.vk.com/authorize?client_id=6352910&display=page&redirect_uri=http://timka.by/vk/' . $action . '&scope=' . implode(',', $filds). '&response_type=code&v=5.71');

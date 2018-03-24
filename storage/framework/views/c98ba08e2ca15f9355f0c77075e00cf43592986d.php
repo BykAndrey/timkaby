@@ -43,10 +43,10 @@
                                 <td>Мобильный телефон:</td>
                                 <td>
 
-                                        <input  class="phone_mask" type="text"  v-model="phone">
+                                        <input  class="phone_mask" type="text"  v-model="phone" id="phone">
 
                                         <a href="#"  v-on:click="save_phone" ref="phone">
-                                            <div>Сохранить телефон</div>
+                                            <div>Сохранить&nbsp;телефон</div>
                                         </a>
                               
                                 </td>
@@ -58,7 +58,7 @@
                                         <input type="text" value="<?php echo e($user_data->adress); ?>" v-model="adress">
 
                                         <a href="#" v-on:click="save_adress"  ref="adress">
-                                            <div>Сохранить адресс</div>
+                                            <div>Сохранить&nbsp;адресс</div>
                                         </a>
 
                                 </td>
@@ -70,7 +70,7 @@
 
                                 
                                         <a href="#" v-on:click="save_feature" ref="feature">
-                                            <div>Сохранить особенности</div>
+                                            <div>Сохранить&nbsp;особенности</div>
                                         </a>
                                   
                                 </td>
@@ -83,37 +83,25 @@
 
     </div>
     </div>
-    <?php echo e($user_data->phone); ?>
 
 <?php $__env->stopSection(); ?>
-
-<!--
-<fieldset>
-                            <legend>Номер заказа: {$order->id}} от <b>{$order->created_at}}</b></legend>
-                            <div style="display: flex">
-                                <div>Сумма: {$order->total_price}} р.</div>
-                                <div>Адресс доставки: {$order->adress}}</div>
-
-                                <div>Статус$order->status}}</div>
-                            </div>
-                        </fieldset>
--->
 
 <?php $__env->startSection("scripts"); ?>
     <script src="<?php echo e(URL::asset('static/js/plugin/jquery.maskinput.js')); ?>"></script>
     <script>
 
-        jQuery(function($) {
-            $.mask.definitions['~']='[+-]';
-            $('input[type="text"]#phone').mask('+375 (99) 999-99-99');
+     /*   jQuery(function($) {
+            //$.mask.definitions['~']='[+-]';
+          //  $('input[type="text"]#phone').mask('+375 (99) 999-99-99');
             console.log(1);
         });
-
+*/
         var profile=new Vue({
             el:"#profile",
             data:{
                 feature:'<?php echo e($user_data->feature); ?>',
                 phone:'<?php echo e($user_data->phone); ?>',
+
                 adress:'<?php echo e($user_data->adress); ?>'
 
             },
@@ -121,12 +109,15 @@
             methods:{
                 save_phone:function (event) {
                     event.preventDefault();
+                    var phone=$('input[type="text"]#phone').val();
+
+                    if(phone.length>=19)
                     $.ajax({
                         url:'/user_ajax',
                         data:{
                             'action':'save_phone',
                             '_token':'<?php echo e(csrf_token()); ?>',
-                            'phone':profile.phone,
+                            'phone':phone,
                         },
 
                         method:'post',
@@ -135,7 +126,8 @@
                             setTimeout(function () {
                                 $(profile.$refs.phone).children('div').css({'animation-name':'none'});
                             },4000);
-                            console.log(data);
+                            //console.log(data);
+                            console.log('phone saved');
                         },
                         error:function (data) {
                             $(profile.$refs.phone).children('div').css({'animation-name':'bad'});
@@ -144,7 +136,7 @@
                             },4000);
                         }
                     });
-                    console.log('phone saved');
+
                 },
                 save_adress:function (event) {
                     event.preventDefault();

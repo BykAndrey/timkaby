@@ -10,8 +10,7 @@
         </div>
         <div class="help">
             Коректно заполните форму заказа и в ближайшее время наш специалист свяжется с вами для подтверждения заказа.
-            <?php echo e($option->name); ?> <?php echo e($option->price); ?>
-
+           
         </div>
         <div class="user_log">
 
@@ -45,7 +44,7 @@
                     <td>
                         <input type="text"
                                name="phone"
-                               class="common-input"
+                               class="common-input phone_mask"
                                min=7
                                required
                                placeholder="+375 (25) 555-55-55"
