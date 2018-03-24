@@ -1,1 +1,191 @@
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('c b=26.1t(\'b\',{1R:`<1 7="b"><1 7="b-1S"><1 7="1V"v-B:14="H()"><M 1j="1W://1p.1u/1i/M/23.24"1h="выход"1g="25"></1><12 7="22">Быстраяпокупка</12> <1 7="20">В ближайшее время специалист свяжется с Вами для подтверждения заказа</1><1 7="b-1Z"><1 7="b-1Y"><x><D>Товар</D><M:1j="\'/1i/1U/\'+9.1T":1h="9.a"1g="1Q"><1P><1f>{{9.a}}</1f><1d>{{9.1e-(9.1N*9.1e/1L)}}&1K;руб.</1d></x></1><1 7="b-4"><x><D>Данныедлязаказа</D><e m="K">Имя:</e><l P="S"7="8-l"i="K"v-q="4.a"v-B:1c="10"><e m="j">Телефон:</e><l P="S"7="8-l"i="j"v-q="4.A"v-B:1c="10"><e m="U">Адресдоставки:</e><l P="S"7="8-l"i="U"v-q="4.r"><e m="I">Спостобдоставки:</e><R v-q="t"a="I"i="I"7="8-R 8-1D 8-1l"><11 v-m="F 1B G":1A="F.i">{{F.a}}({{F.1y}})</11></R><e m="18">Комментарий:</e><16 7="8-l"i="18"v-q="4.L"></16></x></1></1><1 7="b-1o"><1><o 7="8-E 8-E-1n 8-1m"v-B:14="13">Заказать!</o></1><1 v-g="Y==k"><o 7="8-E">Авторизация</o><o 7="8-E">Регистрация</o></1></1></1></1>`,1M:[\'9\'],f:h(){1J{9:6.9,4:{a:\'\',A:\'\',r:\'\',L:\'\'},Y:k,G:y,t:0}},1H:h(){c n={};$.p({J:\'/1a/p\',1b:k,f:{\'W\':\'1x\'},Q:h(f){n=f}});6.G=n;6.t=6.G[0][\'i\'];$.p({J:\'/p\',1b:k,f:{\'W\':\'1r\'},Q:h(f){b.4=f}});6.4=b.4;g(6.a!=y||6.a!=\'\'){6.Y=N}},21:h(){$(\'#j\').1X(\'+V (Z) 1O-Z-Z\')},1s:{10:h(){c C=/.+(V)\\s\\(\\d{2}\\)\\s(\\d{3})\\-(\\d{2})\\-(\\d{2})/;c z=C.15($(\'#j\').O());g(z==y){$(\'#j\').T(\'8-w\')}X{$(\'#j\').1C(\'8-w\')}6.4.A=$(\'#j\').O();1q.1v(6.t)},H:h(){6.$1k(\'H\')},13:h(){c u=N;c C=/.+(V)\\s\\(\\d{2}\\)\\s(\\d{3})\\-(\\d{2})\\-(\\d{2})/;c z=C.15($(\'#j\').O());g(z==y){u=k};g(6.4.a!=17)g(6.4.a.19<3){u=k;$(\'#K\').T(\'8-w\')};g(6.4.r!=17)g(6.4.r.19<5){u=k;$(\'#U\').T(\'8-w\')}X{};g(u==N){c 9=6.9;c n=6.t;c 4=6.4 $.p({J:\'/1a/p\',f:{\'W\':\'b\',\'1w\':9.i,\'1z\':4.a,\'1E\':4.A,\'1F\':4.r,\'1G\':4.L,\'n\':n},Q:h(f){1I(\'Заказ принят!\')}});6.$1k(\'H\')}X{}},},});',62,131,'|div|||user||this|class|common|item|name|quick_order|var||label|data|if|function|id|phone_number|false|input|for|delivery|button|ajax|model|adress||selectDelivery|send||input_error|fieldset|null|myArray|phone|on|myRe|legend|but|opt|options_delivery|close|quick_delivery|url|quick_name|feature|img|true|val|type|success|select|text|addClass|quick_adress|375|action|else|auth|99|changePhone|option|h2|buy|click|exec|textarea|undefined|quick_feature|length|cart|async|keyup|h3|price|h4|width|alt|static|src|emit|select_margin_no|but_width_full|red|controls|timka|console|getAuthUser|methods|component|by|log|id_item|getOptionDelivery|text_price|user_name|value|in|removeClass|select_width_full|user_phone|user_adress|user_feature|created|cycleMessage|return|nbsp|100|props|discount|999|br|180|template|display|image|imagesItem|exit|http|mask|good|content|help|mounted|head|cross|svg||Vue'.split('|'),0,{}))
+var quick_order=Vue.component('quick_order',{
+    template:`
+    <div class="quick_order" >
+    <div class="quick_order-display">
+            <div class="exit" v-on:click="close()">
+            <img src="http://timka.by/static/img/cross.svg" alt="выход" width="25">
+</div>
+            <h2 class="head">Быстрая покупка</h2> <div class="help">В ближайшее время специалист свяжется с Вами для подтверждения заказа</div>
+            <div class="quick_order-content">
+           
+                <div class="quick_order-good">
+                   <fieldset>
+                        <legend>Товар</legend>
+                        <img :src="'/static/imagesItem/'+item.image" :alt="item.name" width="180"><br>
+                        
+                        <h4>{{item.name}}</h4>
+                        <h3>{{item.price-(item.discount*item.price/100)}}&nbsp;руб.</h3>
+                    </fieldset>
+                    
+                </div>
+                
+                <div class="quick_order-user">
+                    <fieldset>
+                        <legend>Данные для заказа</legend>
+                        <label for="quick_name">Имя:</label>
+                        <input type="text" class="common-input" id="quick_name" v-model="user.name" v-on:keyup="changePhone">
+                        <label for="phone_number">Телефон:</label>
+                        <input type="text" class="common-input" id="phone_number" v-model="user.phone" v-on:keyup="changePhone">
+                        <label for="quick_adress">Адрес доставки:</label>
+                        <input type="text" class="common-input" id="quick_adress"  v-model="user.adress">
+                        <label for="quick_delivery">Спостоб доставки:</label>
+                        <select v-model="selectDelivery" name="quick_delivery" id="quick_delivery" class="common-select common-select_width_full common-select_margin_no" >
+            
+                          
+                            <option v-for="opt in options_delivery" :value="opt.id">{{opt.name}} ({{opt.text_price}})</option>
+                        </select>
+                        <label for="quick_feature">Комментарий:</label>
+                        <textarea class="common-input" id="quick_feature"  v-model="user.feature">
+                        </textarea>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="quick_order-controls">
+            <div >
+                <button class="common-but common-but-red common-but_width_full" v-on:click="buy">Заказать! </button>
+              </div>
+              
+              <div v-if="auth==false" >
+                    <button class="common-but">Авторизация</button>
+                    <button class="common-but">Регистрация</button>
+                </div>
+                
+            </div>
+        </div>
+        </div>
+    `,
+    props:['item'],
+    data:function () {
+        return {
+            item:this.item,
+            user:{
+                name:'',
+                phone:'',
+                adress:'',
+                feature:''
+            },
+            auth:false,
+            options_delivery:null,
+            selectDelivery:0
+        }
+    },
+    created:function () {
+        var delivery={};
+        $.ajax({
+            url:'/cart/ajax',
+            async:false,
+            data:{
+                'action':'getOptionDelivery'
+            },
+            success:function (data) {
+                delivery=data;
+            }
+        });
+        this.options_delivery=delivery;
+        //console.log(this.options_delivery);
+        this.selectDelivery=this.options_delivery[0]['id'];
+
+       $.ajax({
+           url:'/ajax',
+           async:false,
+           data:{
+               'action':'getAuthUser'
+           },
+           success:function (data) {
+              // console.log(2);
+               quick_order.user=data;
+               //console.log(quick_order.user.name);
+           }
+       });
+        this.user=quick_order.user;
+        if(this.name!=null || this.name!=''){
+            this.auth=true;
+        };
+
+
+
+    },
+    mounted:function () {
+        $('#phone_number').mask('+375 (99) 999-99-99');
+
+    },
+    methods:{
+        changePhone:function () {
+
+
+            var myRe = /.+(375)\s\(\d{2}\)\s(\d{3})\-(\d{2})\-(\d{2})/;
+
+            var myArray = myRe.exec( $('#phone_number').val());
+
+            if(myArray==null){
+                $('#phone_number').addClass('common-input_error');
+            }else{
+                $('#phone_number').removeClass('common-input_error');
+            }
+            this.user.phone=$('#phone_number').val();
+            console.log(this.selectDelivery);
+        },
+        close:function () {
+            this.$emit('close');
+        },
+        buy:function () {
+
+
+            var send=true;
+            var myRe = /.+(375)\s\(\d{2}\)\s(\d{3})\-(\d{2})\-(\d{2})/;
+
+            var myArray = myRe.exec( $('#phone_number').val());
+
+            if(myArray==null){
+                send=false;
+            };
+
+            if(this.user.name!=undefined)
+            if(this.user.name.length<3){
+                send=false;
+                $('#quick_name').addClass('common-input_error');
+            };
+
+            if(this.user.adress!=undefined)
+            if(this.user.adress.length<5){
+                send=false;
+
+                $('#quick_adress').addClass('common-input_error');
+            }else{
+
+            };
+
+
+            if(send==true){
+                var item=this.item;
+                var delivery=this.selectDelivery;
+                var user=this.user
+
+                    $.ajax({
+                        url:'/cart/ajax',
+                        data:{
+                            'action':'quick_order',
+                            'id_item':item.id,
+                            'user_name':user.name,
+                            'user_phone':user.phone,
+                            'user_adress':user.adress,
+                            'user_feature':user.feature,
+                            'delivery':delivery
+                        },
+                        success:function (data) {
+                            //alert(data);
+                            cycleMessage('Заказ принят!');
+                        }
+                    });
+
+
+
+                this.$emit('close');
+            }else{
+                
+            };
+            
+        },
+    },
+});
+

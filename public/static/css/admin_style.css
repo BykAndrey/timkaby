@@ -1,3 +1,7 @@
+* {
+  font-family: Arial;
+  font-size: 14px;
+}
 body {
   background-color: white;
   width: 1200px;
@@ -39,6 +43,8 @@ h5,
 h6 {
   font-family: Arial;
   border-bottom: 1px dotted greenyellow;
+  padding: 5px;
+  margin: 5px;
 }
 table {
   width: 100%;
@@ -191,6 +197,127 @@ footer {
 }
 .but.but_green {
   background-color: greenyellow;
+}
+input[type="text"] {
+  border: 1px solid grey;
+  background: none;
+  height: 30px;
+  padding: 0px 10px;
+  box-sizing: border-box;
+  width: 100%;
+  transition-duration: 0.3s;
+  transition-property: border;
+  margin-top: 5px;
+}
+input[type="text"]:hover {
+  border: 1px solid #00AAE7;
+}
+input[type="text"]:focus {
+  border: 1px solid #00AAE7;
+  border-bottom: 3px solid #00AAE7;
+}
+select {
+  border: 1px solid #00AAE7;
+  background: none;
+  background-color: rgba(0, 0, 0, 0);
+  height: 30px;
+  padding: 0px 10px;
+  box-sizing: border-box;
+  transition-duration: 0.3s;
+  transition-property: border;
+  margin-top: 5px;
+  color: black;
+}
+select.select-full {
+  width: 100%;
+}
+.btn {
+  border: 1px solid  #00AAE7;
+  background: none;
+  height: 30px;
+  padding: 0px 10px;
+  box-sizing: border-box;
+  width: 100%;
+  transition-duration: 0.3s;
+  transition-property: border;
+  margin-top: 5px;
+  color: white;
+  background-color: #00AAE7;
+  cursor: pointer;
+}
+.btn:hover {
+  color: #00AAE7;
+  background-color: white;
+}
+.btn.btn-good {
+  background-color: #2ca02c;
+  border: 1px solid #1c641c;
+}
+.btn.btn-bad {
+  background-color: #cc0000;
+  border: 1px solid #800000;
+}
+.paginate {
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: center;
+      justify-content: center;
+}
+.paginate a {
+  margin: 0px 10px;
+  text-decoration: none;
+}
+.paginate a div.point {
+  border: 1px solid #00AAE7;
+  color: black;
+  font-size: 16px;
+  padding: 15px;
+}
+.paginate a div.point.selected {
+  background-color: #00AAE7;
+  color: white;
+}
+.import_good {
+  display: -ms-flexbox;
+  display: flex;
+}
+.import_good .block {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 0px 15px;
+}
+.import_good .block h2 {
+  border: none;
+}
+.import_good .block.right .create_offers .offer {
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #00AAE7;
+  padding: 10px 0px;
+}
+.import_good .block.right .create_offers .offer.disabled {
+  position: relative;
+  z-index: 2;
+  opacity: 0.5;
+}
+.import_good .block.right .create_offers .offer.disabled:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+.import_good .block.right .create_offers .images {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.import_good .block.right .create_offers .images .image {
+  margin: 10px 10px;
 }
 @media screen and (max-width: 1200px) {
   body {
